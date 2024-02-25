@@ -7,9 +7,10 @@
 На мастерноде запускаю jupyter notebook командой
 * jupyter notebook --no-browser --port 8888 -ip=*
 Подключаюсь с локального компа к удаленной тачке с jupyter notebook с пробрасыванием портов:
-* ssh -L 8889:localhost:8888 ubuntu@rc1a-dataproc-m-g0qze60v8hlzfvcr.mdb.yandexcloud.net
-На локальной тачке запускаю команду для подлючкения к удаленному jupyter notebook с pyspark
-* http://localhost:8889/tree
+* На локальной тачке запускаю команду для подлючкения к удаленному jupyter notebook с pyspark:
+http://localhost:8889/tree `ssh -L 8889:localhost:8888 ubuntu@rc1a-dataproc-m-xxx.mdb.yandexcloud.net`
+
+
 Токен для подключения взять из консоли мастерноды
 
 Создаем ноутбук со следующим [содержанием](https://github.com/varsey/mlops-practice/blob/main/notebooks/hw-3.ipynb)
@@ -36,6 +37,6 @@ data = (
     .load(['20*.txt'], schema=schema)
 )
 ```
-* Проверка на полноту - ищщем пропушенные значения, находим в колонке terminal_id меньше одного процента
+* Проверка на полноту - ищем пропущенные значения, находим в колонке terminal_id меньше одного процента NaN
 * Проверка на валидность - ищем строки с датой не по формату - таких нет
 * Проверка на консистентность - ищем строки с подозрением на разные единицы измерения. Не нашел
